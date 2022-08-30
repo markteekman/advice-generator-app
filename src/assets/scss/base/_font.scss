@@ -8,8 +8,8 @@
 @use "space" as *;
 
 body {
-  color: var(--font-color);
-  background-color: var(--background);
+  color: white;
+  background-color: var(--dark-blue);
   font-family: var(--font-family-default);
   text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
   text-rendering: optimizeLegibility;
@@ -18,7 +18,7 @@ body {
   @include size-16;
 
   a {
-    color: var(--action-color);
+    color: var(--neon-green);
 
     &:visited {
       color: var(--action-color);

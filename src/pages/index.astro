@@ -4,8 +4,103 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
 
 <DefaultLayout title="Home">
   <section class="margin-48">
-    <div class="container">
-      <h1>Advice Generator App</h1><br>
+    <div class="container align-center center-screen">
+      <div class="screen__inner animate__animated">
+        <div class="card elevation-500">
+          <h1 class="size-12">Advice #<span></span></h1>
+          <p class="size-24"></p>
+          <img src="/pattern-divider-desktop.svg" alt="">
+        </div>
+        <button class="dice">
+          <img src="/icon-dice.svg" alt="Generate random quote">
+        </button>
+      </div>
     </div>
   </section>
 </DefaultLayout>
+
+<script type="module">
+  const screenInner = document.querySelector('.screen__inner')
+  const button = document.querySelector('.dice')
+  const quoteNumber = document.querySelector('h1 span')
+  const quoteText = document.querySelector('p')
+
+  const getRandomQuote = () => {
+    fetch('https://api.adviceslip.com/advice')
+      .then(response => response.json())
+      .then(data => {
+        quoteNumber.innerHTML = data.slip.id
+        quoteText.innerText = `"${data.slip.advice}"`
+      })
+      .catch(error => console.log(error))
+  }
+
+  button.addEventListener('click', () => {
+    screenInner.classList.add('animate__headShake')
+
+    getRandomQuote()
+
+    setTimeout(() => {
+      screenInner.classList.remove('animate__headShake')
+    }, 1000)
+  })
+
+  getRandomQuote()
+</script>
+
+<style lang="scss">
+  .center-screen {
+    height: 70vh;
+
+    .screen__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  h1 {
+    color: var(--neon-green);
+    text-transform: uppercase;
+    letter-spacing: 0.5ch;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    max-width: 600px;
+    padding: 3rem 3rem 5rem;
+    background-color: var(--dark-grayish-blue);
+    border-radius: 1rem;
+    text-align: center;
+  }
+
+  button.dice {
+    margin-top: -2rem;
+    padding: 1.25rem;
+    background-color: var(--neon-green);
+    border: none;
+    border-radius: 100%;
+    transition: box-shadow 0.3s ease-in-out, transform 0.15s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 1.5rem var(--neon-green);
+      transform: scale(1.4);
+
+      img {
+        animation: spin-around 0.5s forwards;
+      }
+    }
+  }
+
+  @keyframes spin-around {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

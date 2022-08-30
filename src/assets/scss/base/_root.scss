@@ -14,13 +14,18 @@
   --radius-large: 6px;
   --gap-default: 2rem;
   --font-measure: 70ch;
-  --font-family-default: "Open Sans", sans-serif;
-  --font-family-special: "Open Sans", sans-serif;
+  --font-family-default: "Manrope", sans-serif;
+  --font-family-special: "Manrope", sans-serif;
   --font-color: var(--neutral-900);
   --action-color: var(--secondary-500);
   --background: var(--neutral-100);
   --primary-background: var(--primary-100);
   --neutral-background: var(--neutral-200);
+  --light-cyan: hsl(193, 38%, 86%);
+  --neon-green: hsl(150, 100%, 66%);
+  --grayish-blue: hsl(217, 19%, 38%);
+  --dark-grayish-blue: hsl(217, 19%, 24%);
+  --dark-blue: hsl(218, 23%, 16%);
 }
 
 .darkmode {
