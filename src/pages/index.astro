@@ -12,20 +12,20 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
           <img src="/pattern-divider-desktop.svg" alt="">
         </div>
         <button class="dice">
-          <img src="/icon-dice.svg" alt="Generate random quote">
+          <img src="/advice-generator-app/icon-dice.svg" alt="Generate random quote">
         </button>
       </div>
     </div>
   </section>
 </DefaultLayout>
 
-<script type="module">
+<script>
   const screenInner = document.querySelector('.screen__inner')
   const button = document.querySelector('.dice')
   const quoteNumber = document.querySelector('h1 span')
   const quoteText = document.querySelector('p')
 
-  const getRandomQuote = () => {
+  function getRandomQuote () {
     fetch('https://api.adviceslip.com/advice')
       .then(response => response.json())
       .then(data => {
@@ -42,7 +42,7 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
 
     setTimeout(() => {
       screenInner.classList.remove('animate__headShake')
-    }, 1000)
+    }, 500)
   })
 
   getRandomQuote()
@@ -63,6 +63,7 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
     color: var(--neon-green);
     text-transform: uppercase;
     letter-spacing: 0.5ch;
+    line-height: 0;
   }
 
   .card {
@@ -70,7 +71,7 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
     flex-direction: column;
     align-items: center;
     gap: 3rem;
-    max-width: 600px;
+    width: 600px;
     padding: 3rem 3rem 5rem;
     background-color: var(--dark-grayish-blue);
     border-radius: 1rem;
