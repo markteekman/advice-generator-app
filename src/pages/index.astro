@@ -36,13 +36,12 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
   }
 
   button.addEventListener('click', () => {
-    screenInner.classList.add('animate__headShake')
-
-    getRandomQuote()
+    screenInner.classList.add('animate__bounce')
 
     setTimeout(() => {
-      screenInner.classList.remove('animate__headShake')
-    }, 500)
+      getRandomQuote()
+      screenInner.classList.remove('animate__bounce')
+    }, 1000)
   })
 
   getRandomQuote()
@@ -69,9 +68,11 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
   .card {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     gap: 3rem;
     width: 600px;
+    min-height: 400px;
     padding: 3rem 3rem 5rem;
     background-color: var(--dark-grayish-blue);
     border-radius: 1rem;
