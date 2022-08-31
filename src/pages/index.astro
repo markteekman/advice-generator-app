@@ -8,7 +8,7 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
       <div class="screen__inner animate__animated">
         <div class="card elevation-500">
           <h1 class="size-12">Advice #<span></span></h1>
-          <p class="size-24"></p>
+          <p class="size-24 animate__animated"></p>
           <img src="/advice-generator-app/pattern-divider-desktop.svg" alt="">
         </div>
         <button class="dice">
@@ -37,9 +37,14 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
 
   button.addEventListener('click', () => {
     screenInner.classList.add('animate__bounce')
+    quoteText.classList.remove('animate__fadeIn')
 
     setTimeout(() => {
       getRandomQuote()
+      quoteText.classList.add('animate__fadeIn')
+    }, 500)
+
+    setTimeout(() => {
       screenInner.classList.remove('animate__bounce')
     }, 1000)
   })
