@@ -6,9 +6,9 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
   <section class="margin-48">
     <div class="container align-center center-screen">
       <div class="screen__inner animate__animated">
-        <div class="card elevation-500">
-          <h1 class="size-12">Advice #<span></span></h1>
-          <p class="size-24 animate__animated"></p>
+        <div class="card elevation-500" aria-live="polite">
+          <h1 class="size-12">Advice #<span>000</span></h1>
+          <p class="animate__animated">"A delayed game is eventually good, a bad game is bad forever."</p>
           <img src="/advice-generator-app/pattern-divider-desktop.svg" alt="">
         </div>
         <button class="dice">
@@ -30,7 +30,7 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
       .then(response => response.json())
       .then(data => {
         quoteNumber.innerHTML = data.slip.id
-        quoteText.innerText = `"${data.slip.advice}"`
+        quoteText.innerText = `“${data.slip.advice}”`
       })
       .catch(error => console.log(error))
   }
@@ -53,6 +53,9 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
 </script>
 
 <style lang="scss">
+  @use '../assets/scss/base/breakpoint' as *;
+  @use '../assets/scss/base/size' as *;
+
   .center-screen {
     height: 70vh;
 
@@ -69,6 +72,15 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
     letter-spacing: 0.5ch;
     line-height: 0;
   }
+  
+  p {
+    color: var(--light-cyan);
+    @include size-20;
+
+    @include breakpoint(medium) {
+      @include size-24;
+    }
+  }
 
   .card {
     display: flex;
@@ -76,12 +88,16 @@ import DefaultLayout from '../layouts/DefaultLayout.astro'
     justify-content: space-between;
     align-items: center;
     gap: 3rem;
-    width: 600px;
-    min-height: 400px;
+    max-width: 500px;
+    min-height: 330px;
     padding: 3rem 3rem 5rem;
     background-color: var(--dark-grayish-blue);
     border-radius: 1rem;
     text-align: center;
+
+    @include breakpoint(medium) {
+      width: 540px;
+    }
   }
 
   button.dice {
