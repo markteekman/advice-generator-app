@@ -35,12 +35,12 @@ As an extra challenge I will do the following things:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![social-preview-image](https://user-images.githubusercontent.com/3909046/188659932-70509658-5214-410e-a5b1-dec7c02d6778.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://markteekman.github.io/advice-generator-app/)
+- [Solution URL](https://www.frontendmentor.io/solutions/astro-wcag-accessibility-css-animations-and-vanilla-javascript-yYt6kptml_)
+- [Live Site URL](https://markteekman.github.io/advice-generator-app/)
 
 ## My process
 
